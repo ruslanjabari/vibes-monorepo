@@ -56,10 +56,16 @@ app.post('/', (req, res) => {
       console.log('Error writing file', err);
     } else {
       console.log('Successfully wrote file');
+      res.sendStatus(200);
+      console.log(wss.clients);
+      wss.clients.forEach(function each(client) {
+        if (client.readyState === WebSocket.OPEN) {
+          client.send(JSON.stringify({ sample_type, value, unit }));
+        }
+      });
     }
   });
   
-  res.sendStatus(200);
 });
 
-app.listen(4000, () => console.log('app is listening on port 4000 (HTTP).'));
+app.listen(4002, () => console.log('app is listening on port 4002 (HTTP).'));

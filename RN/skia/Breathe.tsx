@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useContext, useState } from "react";
 import { DimensionsProvider, useDimensions } from "../hooks/Provider";
 import {
   Canvas,
@@ -14,6 +14,7 @@ import {
   useTiming,
 } from "@shopify/react-native-skia";
 import { COLORS } from "../constants";
+import { LevelContext } from '../context';
 
 const Breathe = () => {
   return (
@@ -25,15 +26,38 @@ const Breathe = () => {
 
 export default Breathe;
 
+let lastHRV = 0;
+let lastHeart = 0;
+
 const _Breathe = () => {
-  const skValue = useTiming({ from: 0, to: 1, loop: true, yoyo: true }, { duration: 3500, easing: Easing.bezier(0.5, 0, 0.5, 1) });
+  const [update, setUpdate] = useState(0.2)
+
+  const ctx = useContext(LevelContext);
+
+  React.useEffect(() => {
+    setTimeout(()=>
+    setUpdate(0.4)
+   , 7000);
+   const timer = setInterval(() => {
+    if (lastHRV === 0 || lastHeart === 0) return;
+    let updatePoint = 0.0;
+    if (ctx.hrv < lastHRV || ctx.heartRate < lastHeart) updatePoint += 0.1;
+    if (ctx.hrv > lastHRV || ctx.heartRate > lastHeart) updatePoint -= 0.1;
+    lastHeart = ctx.heartRate;
+    lastHRV = ctx.hrv
+    setUpdate(updatePoint < 0.4 ? 0.4 : updatePoint);
+   }, 10000)
+
+   return () => clearInterval(timer)
+  }, []);
+
   const { CENTER, SCREEN_HEIGHT, SCREEN_WIDTH } = useDimensions();
   const data = useMemo(() => {
-    return Array(6).fill(0);
+    return Array(8).fill(0);
   }, []);
 
   const radius = SCREEN_WIDTH / 6;
-
+  const skValue = useTiming({ from: 0, to: update, loop: true, yoyo: true }, { duration: 3500, easing: Easing.bezier(0.5, 0, 0.5, 1) })
   return (
     <Canvas style={{ width: SCREEN_WIDTH, height: SCREEN_HEIGHT }}>
       {data.map((_, i) => {

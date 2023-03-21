@@ -39,6 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		101E797829C00F2100C76FA2 /* tempTracker-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "tempTracker-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		10E7E60329972F3E00C9195C /* tempTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tempTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E7E60929972F3E00C9195C /* tempTracker Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tempTracker Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E7E60E29972F3E00C9195C /* tempTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempTrackerApp.swift; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		10E7E60D29972F3E00C9195C /* tempTracker Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				101E797829C00F2100C76FA2 /* tempTracker-Watch-App-Info.plist */,
 				10E7E62029972F5300C9195C /* tempTracker Watch App.entitlements */,
 				10E7E60E29972F3E00C9195C /* tempTrackerApp.swift */,
 				10E7E61029972F3E00C9195C /* ContentView.swift */,
@@ -265,6 +267,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
 		};
@@ -316,6 +319,7 @@
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Release;
 		};
@@ -331,8 +335,10 @@
 				DEVELOPMENT_TEAM = 25258X9VT5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "tempTracker-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = tempTracker;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "$(PRODUCT_NAME) would like to capture a snap shot of your heart rate for the purpose of using the data in a clinical research study. Please grant this permission to continue participating.";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "tempTracker Watch App would like to capture a snap shot of your heart rate for the purpose of using the data in a clinical research study. Please grant this permission to continue participating.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -363,8 +369,10 @@
 				DEVELOPMENT_TEAM = 25258X9VT5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "tempTracker-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = tempTracker;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "$(PRODUCT_NAME) would like to capture a snap shot of your heart rate for the purpose of using the data in a clinical research study. Please grant this permission to continue participating.";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "tempTracker Watch App would like to capture a snap shot of your heart rate for the purpose of using the data in a clinical research study. Please grant this permission to continue participating.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
